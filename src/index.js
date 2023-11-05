@@ -4,7 +4,7 @@ import morgan from 'morgan'
 import dotenv from 'dotenv'
 import session from 'express-session'
 
-import routes from './routes'
+import allRoutes from './routes';
 
 dotenv.config()
 const app = express()
@@ -19,7 +19,7 @@ app.use(session({
   cookie: { secure: true }
 }))
 app.use(morgan('dev'))
-app.use('/api', routes)
+app.use('/api', allRoutes)
 
 const PORT = process.env.PORT || 3000
 app.listen(PORT, () => {
