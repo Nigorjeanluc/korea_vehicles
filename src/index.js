@@ -3,6 +3,7 @@ import cors from 'cors'
 import morgan from 'morgan'
 import dotenv from 'dotenv'
 import session from 'express-session'
+import path from 'path'
 
 import allRoutes from './routes';
 
@@ -13,12 +14,19 @@ app.use(cors({
   origin: '*'
 }))
 app.use(session({
-  secret: 'keyboard cat',
+  secret: 'secret123',
   resave: false,
   saveUninitialized: true,
-  cookie: { secure: true }
+  cookie: { secure: false }
 }))
 app.use(morgan('dev'))
+app.use(express.json())
+app.use(express.static(path.join(__dirname, 'client')))
+
+app.get('/', (req, res) => {
+  res.sendFile('./client/index.html', { root: '.' })
+})
+
 app.use('/api', allRoutes)
 
 const PORT = process.env.PORT || 3000
