@@ -4,7 +4,7 @@
   "description": "Korea Vehicles ldt.",
   "main": "index.js",
   "scripts": {
-    "build": "babel --plugins @babel/plugin-transform-runtime ./src/index.js -d dist",
+    "build": "babel --plugins @babel/plugin-transform-runtime ./src -d dist",
     "migrate": "cross-env NODE_ENV=production npx sequelize db:migrate",
     "db:create": "cross-env NODE_ENV=production npx sequelize db:create",
     "db:drop": "cross-env NODE_ENV=production npx sequelize db:drop",
