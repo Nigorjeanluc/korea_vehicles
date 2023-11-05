@@ -37,7 +37,7 @@ const devDB = new GenerateCredentials(
   process.env.DB_USERNAME,
   process.env.DB_PASSWORD,
   process.env.DEVELOP_DB_NAME,
-  process.env.HOST,
+  process.env.DB_HOST,
   'postgres'
 )
 
@@ -45,7 +45,7 @@ const testDB = new GenerateCredentials(
   process.env.DB_USERNAME,
   process.env.DB_PASSWORD,
   process.env.TEST_DB_NAME,
-  process.env.HOST,
+  process.env.DB_HOST,
   'postgres'
 )
 
@@ -53,7 +53,7 @@ const prodDB = new GenerateCredentials(
   process.env.DB_USERNAME,
   process.env.DB_PASSWORD,
   process.env.PRODUCTION_DB_NAME,
-  process.env.HOST,
+  process.env.DB_HOST,
   'postgres'
 )
 
