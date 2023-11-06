@@ -28,33 +28,6 @@ passport.deserializeUser((user, done) => {
   done(null, user)
 })
 
-
-let people = [
-  {
-    name: "Hannah Rickard",
-    number: "06-51-99-56-83",
-    id: 1
-  },
-  {
-    name: "Hyun Namkoong",
-    number: "10987654",
-    id: 2
-  },
-  {
-    name: "Courtney Martinez",
-    number: "3691215",
-    id: 3
-  }
-]
-
-router.get('/', (request, response) => {
-    response.send('<h1>Phonebook</h1>')
-})
-
-router.get('/api/people', (request, response) => {
-    response.json(people)
-})
-
 router.get('/auth/google',
   passport.authenticate('google', {
     scope: [ 'email', 'profile' ]
@@ -63,8 +36,8 @@ router.get('/auth/google',
 
 router.get('/auth/google/callback',
   passport.authenticate( 'google', {
-    successRedirect: '/auth/google/success',
-    failureRedirect: '/auth/google/failure'
+    successRedirect: '/api/auth/google/success',
+    failureRedirect: '/api/auth/google/failure'
 }));
 
 router.get('/auth/google/failure', (req, res) => {
