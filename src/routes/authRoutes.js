@@ -40,7 +40,7 @@ router.get('/auth/google/callback',
     failureRedirect: '/api/auth/google/failure'
 }));
 
-router.get('/auth/google/failure', (req, res) => {
+router.get('/auth/google/success', (req, res) => {
   return res.send('Success')
 })
 
@@ -48,7 +48,7 @@ router.get('/auth/google/failure', (req, res) => {
   return res.send('Something went wrong')
 })
 
-router.get('/api/auth/google/success', isLoggedIn, (req, res) => {
+router.get('/auth/protected', isLoggedIn, (req, res) => {
   let name = res.user.displayName
   return res.send(`Hello ${name}`)
 })
