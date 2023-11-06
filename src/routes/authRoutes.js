@@ -12,7 +12,7 @@ router.use(passport.session())
 passport.use(new GoogleStrategy({
     clientID: process.env.GOOGLE_CLIENT_ID,
     clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-    callbackURL: `http://${process.env.BACKEND_HOST}/api/auth/google/callback`,
+    callbackURL: `http://${process.env.LOCAL_BACKEND_HOST}/api/auth/google/callback`,
     passReqToCallback   : true
   },
   function(request, accessToken, refreshToken, profile, done) {
@@ -48,7 +48,7 @@ router.get('/auth/google/failure', (req, res) => {
   return res.send('Something went wrong')
 })
 
-router.get('/auth/protected', isLoggedIn, (req, res) => {
+router.get('/api/auth/google/success', isLoggedIn, (req, res) => {
   let name = res.user.displayName
   return res.send(`Hello ${name}`)
 })
