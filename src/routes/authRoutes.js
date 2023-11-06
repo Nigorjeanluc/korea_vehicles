@@ -12,7 +12,7 @@ router.use(passport.session())
 passport.use(new GoogleStrategy({
     clientID: process.env.GOOGLE_CLIENT_ID,
     clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-    callbackURL: `http://${process.env.LOCAL_BACKEND_HOST}/api/auth/google/callback`,
+    callbackURL: `http://${process.env.BACKEND_HOST}/api/auth/google/callback`,
     passReqToCallback   : true
   },
   function(request, accessToken, refreshToken, profile, done) {
