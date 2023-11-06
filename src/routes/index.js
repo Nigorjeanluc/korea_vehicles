@@ -1,8 +1,8 @@
 import Router from 'express'
-import authRoutes from './authRoutes'
+import socialAuthRoutes from './socialAuthRoutes'
 
 const router = Router()
 
-router.use(authRoutes)
+router.use(socialAuthRoutes)
 
 export default router
