@@ -41,6 +41,7 @@ router.get('/auth/google/callback',
 }));
 
 router.get('/auth/google/success', (req, res) => {
+  // console.log(req.user)
   return res.send('Success')
 })
 
@@ -49,7 +50,7 @@ router.get('/auth/google/failure', (req, res) => {
 })
 
 router.get('/auth/protected', isLoggedIn, (req, res) => {
-  let name = res.user.displayName
+  let name = req.user.displayName
   return res.send(`Hello ${name}`)
 })
 
