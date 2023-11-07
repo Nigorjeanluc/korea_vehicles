@@ -1,3 +1,7 @@
+/* eslint-disable default-param-last */
+/* eslint-disable no-sequences */
+/* eslint-disable no-unused-expressions */
+/* eslint-disable require-jsdoc */
 import dotenv from 'dotenv';
 
 dotenv.config();

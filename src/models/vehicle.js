@@ -18,5 +18,5 @@ const vehicleDefinition = (sequelize, DataTypes) => {
 
   return vehicle;
 };
-  
-export default vehicleDefinition;
+
+export default vehicleDefinition

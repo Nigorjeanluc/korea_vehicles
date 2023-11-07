@@ -31,4 +31,4 @@ const up = async (queryInterface, Sequelize) => queryInterface.createTable('vehi
 
 const down = async (queryInterface) => queryInterface.dropTable('vehicles');
 
-module.exports = { up, down };
+export default { up, down };

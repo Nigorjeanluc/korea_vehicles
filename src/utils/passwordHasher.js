@@ -1,4 +1,4 @@
-import bcrypt from 'bcrypt';
+import bcrypt from 'bcrypt'
 /**
  * This class contains
  * two methods, one to help hashing password
@@ -11,7 +11,7 @@ class Hasher {
      * @returns {string} The users's hashed password.
      */
   static hashPassword(password) {
-    return bcrypt.hashSync(password, 10);
+    return bcrypt.hashSync(password, 10)
   }
 
   /**
@@ -25,4 +25,4 @@ class Hasher {
   }
 }
 
-export default Hasher;
+export default Hasher

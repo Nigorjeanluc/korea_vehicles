@@ -23,7 +23,7 @@ const up = (queryInterface, Sequelize) => queryInterface.createTable('tokens', {
 
 const down = (queryInterface) => queryInterface.dropTable('tokens');
 
-export {
+export default {
   up,
   down
-};
+}

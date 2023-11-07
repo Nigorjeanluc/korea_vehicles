@@ -1,4 +1,4 @@
-import models from '../models';
+import models from '../../models';
 
 const {
   user,
@@ -47,14 +47,14 @@ class UserDB {
         //   as: 'tasks',
         //   required: false,
         //   // Pass in the Product attributes that you want to retrieve
-        //   attributes: ['id', 'title', 'createdAt', 'updatedAt'],
+        //   attributes: ['id', 'title', 'created_at', 'updated_at'],
         // },
         // {
         //   model: Task,
         //   as: 'employeeTasks',
         //   required: false,
         //   // Pass in the Product attributes that you want to retrieve
-        //   attributes: ['id', 'title', 'createdAt', 'updatedAt'],
+        //   attributes: ['id', 'title', 'created_at', 'updated_at'],
         //   through: {
         //     // This block of code allows you to retrieve the properties of the join table
         //     model: UserTask,
@@ -85,11 +85,11 @@ class UserDB {
   static async saveUser(entry) {
     const acceptedUser = await user.create(
       {
-        ...entry, isVerified: false, createdAt: new Date(), updatedAt: new Date()
+        ...entry, isVerified: false, created_at: new Date(), updated_at: new Date()
       },
       {
         fields: [
-          'id', 'fullname', 'email', 'username', 'gender', 'password', 'locationIds', 'phoneNumber', 'nationalId', 'passportId', 'role', 'isVerified', 'createAt', 'updatedAt'
+          'id', 'fullname', 'email', 'username', 'gender', 'password', 'locationIds', 'phoneNumber', 'nationalId', 'passportId', 'role', 'isVerified', 'create_at', 'updated_at'
         ]
       }
     );
@@ -97,4 +97,4 @@ class UserDB {
   }
 }
 
-export default UserDB;
+export default UserDB

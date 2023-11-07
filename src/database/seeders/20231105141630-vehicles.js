@@ -5,14 +5,14 @@ const vehicles = [{
   user_id: 1,
   created_at: new Date(),
   updated_at: new Date()
-},{
+}, {
   VIN: 'FHSHS3465346XNNXN',
   model_year: 2021,
   immatriculation_number: 'RAA234H',
   user_id: 1,
   created_at: new Date(),
   updated_at: new Date()
-},{
+}, {
   VIN: 'FHSHS34653426XNNXN',
   model_year: 2023,
   immatriculation_number: 'RAE234H',

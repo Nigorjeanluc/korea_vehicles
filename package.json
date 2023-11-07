@@ -37,6 +37,9 @@
   "dependencies": {
     "@babel/node": "^7.22.19",
     "@babel/runtime": "^7.23.2",
+    "@vonage/auth": "^1.7.0",
+    "@vonage/messages": "^1.10.0",
+    "@vonage/server-sdk": "^3.10.0",
     "babel-plugin-add-module-exports": "^1.0.4",
     "bcrypt": "^5.1.1",
     "cors": "^2.8.5",
@@ -56,8 +59,10 @@
     "passport-local": "^1.0.0",
     "pg": "^8.11.3",
     "pg-hstore": "^2.3.4",
+    "randomatic": "^3.1.1",
     "sequelize": "^6.34.0",
     "socket.io": "^4.7.2",
-    "swagger-ui-express": "^5.0.0"
+    "swagger-ui-express": "^5.0.0",
+    "termii-nodejs": "^1.1.2"
   }
 }

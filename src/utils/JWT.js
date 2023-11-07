@@ -1,9 +1,9 @@
 import dotenv from 'dotenv';
 import jwt from 'jsonwebtoken';
-import TokenDB from './db/tokenDB';
+import tokenDB from './db/tokenDB';
 import models from '../models';
 
-const { token } = models;
+const { Token } = models;
 
 dotenv.config();
 
@@ -19,20 +19,21 @@ class TokenHelper {
    * @param {string} password The user's password.
    * @returns {string} The users's hashed password.
    */
-  // static generateResetPasswordToken({
-  //   id, email, password, createdAt,
-  // }) {
-  //   const secrect = `${password}_${createdAt}`;
-  //   return jwt.sign({ id, email, password }, secrect, { expiresIn: 3600 });
-  // }
+  static generateResetPasswordToken({
+    id, email, password, created_at,
+  }) {
+    const secrect = `${password}_${created_at}`;
+    return jwt.sign({ id, email, password }, secrect, { expiresIn: 3600 });
+  }
 
   /**
    * Hashs the password.
-   * @param {string} jwtToken The user's token.
+   * @param {string} token The user's token.
+   * @param {string} secrectKey The secret key.
    * @returns {string} The users's hashed password.
    */
-  static decodedToken(jwtToken) {
-    const isToken = jwt.verify(jwtToken, process.env.SECRET_KEY);
+  static decodedToken(token, secrectKey) {
+    const isToken = jwt.verify(token, secrectKey);
     return isToken;
   }
 
@@ -53,8 +54,8 @@ class TokenHelper {
     const generatedToken = jwt.sign({
       id, username, email, role, isVerified
     }, process.env.SECRET_KEY);
-    TokenDB.saveToken(generatedToken, id);
+    tokenDB.saveToken(generatedToken, id);
     return generatedToken;
   }
 }
-export default TokenHelper;
+export default TokenHelper

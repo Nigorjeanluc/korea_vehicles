@@ -1,4 +1,4 @@
-import models from '../models';
+import models from '../../models';
 
 const { token } = models;
 
@@ -13,7 +13,7 @@ class TokenDB {
    * @returns {string} The users's token.
    */
   static async findToken(jwtToken) {
-    await Token.findOne({
+    await token.findOne({
       where: { value: jwtToken }
     });
   }
@@ -21,15 +21,15 @@ class TokenDB {
   /**
    * insert generatyed token into table in the DB.
    * @param {string} jwtToken The token for user.
-   * @param {integer} userId The user id.
+   * @param {integer} user_id The user id.
    * @returns {string} The users's token.
    */
-  static async saveToken(jwtToken, userId) {
-    await Token.create({
+  static async saveToken(jwtToken, user_id) {
+    await token.create({
       value: jwtToken,
-      userId,
-      createdAt: new Date(),
-      updatedAt: new Date()
+      user_id,
+      created_at: new Date(),
+      updated_at: new Date()
     });
   }
 
@@ -39,8 +39,8 @@ class TokenDB {
    * @returns {string} The users's token.
    */
   static async deleteValidToken(jwtToken) {
-    await Token.destroy({ where: { value: jwtToken } });
+    await token.destroy({ where: { value: jwtToken } });
   }
 }
 
-export default TokenDB;
+export default TokenDB
