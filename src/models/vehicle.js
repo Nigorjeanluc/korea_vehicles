@@ -4,8 +4,8 @@ const vehicleDefinition = (sequelize, DataTypes) => {
     model_year: { type: DataTypes.INTEGER },
     immatriculation_number: { type: DataTypes.STRING },
     user_id: { type: DataTypes.INTEGER },
-    created_at: { type: DataTypes.DATE },
-    updated_at: { type: DataTypes.DATE }
+    createdAt: { type: DataTypes.DATE },
+    updatedAt: { type: DataTypes.DATE }
   }, {});
 
   vehicle.associate = (models) => {

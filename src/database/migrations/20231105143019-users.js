@@ -28,18 +28,18 @@ const up = (queryInterface, Sequelize) => queryInterface.createTable('users', {
     type: Sequelize.STRING
   },
   role: {
-    type: Sequelize.ENUM('CUSTOMER', 'CASHIER', 'COMPANY ADMIN', 'SUPER ADMIN'),
+    type: Sequelize.ENUM('CUSTOMER', 'CASHIER', 'COMPANY_ADMIN', 'SUPER_ADMIN'),
     defaultValue: 'CUSTOMER'
   },
   isVerified: {
     type: Sequelize.BOOLEAN,
     defaultValue: false
   },
-  created_at: {
+  createdAt: {
     allowNull: false,
     type: Sequelize.DATE
   },
-  updated_at: {
+  updatedAt: {
     allowNull: false,
     type: Sequelize.DATE
   }

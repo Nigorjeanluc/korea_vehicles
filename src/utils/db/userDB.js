@@ -2,7 +2,8 @@ import models from '../../models';
 
 const {
   user,
-  token
+  token,
+  verification_code
 } = models;
 
 /**
@@ -26,42 +27,11 @@ class UserDB {
           model: token,
           as: 'token',
           attributes: ['id', 'value']
-        },
-        // {
-        //   model: Province,
-        //   as: 'province',
-        //   attributes: ['id', 'name']
-        // },
-        // {
-        //   model: District,
-        //   as: 'district',
-        //   attributes: ['id', 'name']
-        // },
-        // {
-        //   model: Sector,
-        //   as: 'sector',
-        //   attributes: ['id', 'name']
-        // },
-        // {
-        //   model: Task,
-        //   as: 'tasks',
-        //   required: false,
-        //   // Pass in the Product attributes that you want to retrieve
-        //   attributes: ['id', 'title', 'created_at', 'updated_at'],
-        // },
-        // {
-        //   model: Task,
-        //   as: 'employeeTasks',
-        //   required: false,
-        //   // Pass in the Product attributes that you want to retrieve
-        //   attributes: ['id', 'title', 'created_at', 'updated_at'],
-        //   through: {
-        //     // This block of code allows you to retrieve the properties of the join table
-        //     model: UserTask,
-        //     as: 'UserTasks',
-        //     attributes: ['taskId'],
-        //   }
-        // }
+        }, {
+          model: verification_code,
+          as: 'verification_code',
+          attributes: ['id', 'value']
+        }
       ]
     });
     return userExists;
@@ -85,11 +55,19 @@ class UserDB {
   static async saveUser(entry) {
     const acceptedUser = await user.create(
       {
-        ...entry, isVerified: false, created_at: new Date(), updated_at: new Date()
+        ...entry, createdAt: new Date(), updatedAt: new Date()
       },
       {
         fields: [
-          'id', 'fullname', 'email', 'username', 'gender', 'password', 'locationIds', 'phoneNumber', 'nationalId', 'passportId', 'role', 'isVerified', 'create_at', 'updated_at'
+          'name',
+          'username',
+          'email',
+          'phoneNumber',
+          'password',
+          'role',
+          'isVerified',
+          'create_at',
+          'updatedAt'
         ]
       }
     );

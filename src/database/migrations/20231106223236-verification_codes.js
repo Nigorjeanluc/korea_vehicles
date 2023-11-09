@@ -12,10 +12,10 @@ const up = (queryInterface, sequelize) => queryInterface.createTable('verificati
   value: {
     type: sequelize.STRING
   },
-  created_at: {
+  createdAt: {
     type: sequelize.DATE,
   },
-  updated_at: {
+  updatedAt: {
     type: sequelize.DATE,
   },
 });

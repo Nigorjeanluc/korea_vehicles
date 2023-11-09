@@ -28,8 +28,8 @@ class TokenDB {
     await token.create({
       value: jwtToken,
       user_id,
-      created_at: new Date(),
-      updated_at: new Date()
+      createdAt: new Date(),
+      updatedAt: new Date()
     });
   }
 

@@ -3,7 +3,7 @@ import jwt from 'jsonwebtoken';
 import tokenDB from './db/tokenDB';
 import models from '../models';
 
-const { Token } = models;
+const { token } = models;
 
 dotenv.config();
 
@@ -11,7 +11,7 @@ dotenv.config();
  * This class contains.
  * three methods, one to help hashing password (hashPassword).
  * other the second to retrieve hashed password.
- * and the lastone for generating token.
+ * and the lastone for generating validToken.
  */
 class TokenHelper {
   /**
@@ -20,20 +20,20 @@ class TokenHelper {
    * @returns {string} The users's hashed password.
    */
   static generateResetPasswordToken({
-    id, email, password, created_at,
+    id, email, password, createdAt,
   }) {
-    const secrect = `${password}_${created_at}`;
+    const secrect = `${password}_${createdAt}`;
     return jwt.sign({ id, email, password }, secrect, { expiresIn: 3600 });
   }
 
   /**
    * Hashs the password.
-   * @param {string} token The user's token.
+   * @param {string} validToken The user's validToken.
    * @param {string} secrectKey The secret key.
    * @returns {string} The users's hashed password.
    */
-  static decodedToken(token, secrectKey) {
-    const isToken = jwt.verify(token, secrectKey);
+  static decodedToken(validToken, secrectKey) {
+    const isToken = jwt.verify(validToken, secrectKey);
     return isToken;
   }
 
@@ -47,7 +47,7 @@ class TokenHelper {
    * @returns {string} The users's hashed password.
    */
   static async generateToken(id, username, email, role, isVerified) {
-    const userTokenExists = await Token.findOne({ where: { userId: id } });
+    const userTokenExists = await token.findOne({ where: { user_id: id } });
     if (userTokenExists) {
       return userTokenExists.value;
     }

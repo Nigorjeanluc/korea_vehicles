@@ -1,41 +1,48 @@
+import { Op } from 'sequelize'
 import models from '../../models';
 
-const { code } = models;
+const { verification_code } = models;
 
 /**
  * class to deal with all needed operations
  * on the token table
  */
-class CodeDB {
+class VerificationCode {
   /**
    * find token into table in the DB
-   * @param {string} validCode confirmation code
+   * @param {string} validCode confirmation verification_code
    * @param {integer} user_id user Id
    * @returns {string} The users's token.
    */
   static async findCode(validCode, user_id) {
-    const savedCode = await code.findOne({
-      where: { value: validCode, user_id }, order: [['created_at', 'DESC']]
+    const savedCode = await verification_code.findOne({
+      where: {
+        [Op.and]: [
+          { value: String(validCode) },
+          { user_id }
+        ]
+      },
+      order: [['createdAt', 'DESC']]
     });
     return savedCode;
   }
 
   /**
-   * insert generatyed code into table in the DB.
-   * @param {string} validCode The code for user.
+   * insert generatyed verification_code into table in the DB.
+   * @param {string} validCode The verification_code for user.
    * @param {integer} user_id The user id.
-   * @returns {string} The users's code.
+   * @returns {string} The users's verification_code.
    */
   static async saveCode(validCode, user_id) {
-    const validationCode = await code.create({
-      user_id,
+    const validationCode = await verification_code.create({
       value: validCode,
-      created_at: new Date(),
-      updated_at: new Date()
+      user_id,
+      createdAt: new Date(),
+      updatedAt: new Date()
     },
     {
       fields: [
-        'id', 'user_id', 'value', 'create_at', 'updated_at'
+        'id', 'value', 'user_id', 'createdAt', 'updatedAt'
       ]
     });
 
@@ -49,8 +56,8 @@ class CodeDB {
    * @returns {string} The users's token.
    */
   static async deleteValidCode(validCode, user_id) {
-    await code.destroy({ where: { value: validCode, user_id } });
+    await verification_code.destroy({ where: { value: String(validCode), user_id } });
   }
 }
 
-export default CodeDB
+export default VerificationCode
