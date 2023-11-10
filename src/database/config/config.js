@@ -62,7 +62,8 @@ const prodDB = new GenerateCredentials(
   'postgres',
   {
     ssl: {
-      rejectUnauthorized: false
+      ssl: true,
+      native: true
     }
   }
 )
