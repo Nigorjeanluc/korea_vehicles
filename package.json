@@ -12,7 +12,7 @@
     "db:seed": "cross-env NODE_ENV=production npx sequelize db:seed:all",
     "dev": "nodemon --exec babel-node ./src/index",
     "db": "npm run db:create && npm run db:migrate && npm run db:seed",
-    "start": "npm run db && npm run build && cross-env NODE_ENV=production babel-node ./dist/index.js"
+    "start": "npm run build && cross-env NODE_ENV=production babel-node ./dist/index.js"
   },
   "author": "Igor J.L Ndiramiye",
   "license": "ISC",
