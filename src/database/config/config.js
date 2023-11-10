@@ -7,14 +7,13 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 class GenerateCredentials {
-  constructor(username = 'postgres', password = '', database, host, dialect = 'postgres', dialectOptions = undefined) {
+  constructor(username = 'postgres', password = '', database, host, dialect = 'postgres') {
     this.username = username,
     this.password = password,
     this.database = database,
     this.host = host,
     this.dialect = dialect,
-    this.logging = false,
-    this.dialectOptions = dialectOptions
+    this.logging = false
   }
 
   getCredentials() {
@@ -59,13 +58,7 @@ const prodDB = new GenerateCredentials(
   process.env.DB_PASSWORD,
   process.env.PRODUCTION_DB_NAME,
   process.env.DB_HOST,
-  'postgres',
-  {
-    ssl: {
-      ssl: true,
-      native: true
-    }
-  }
+  'postgres'
 )
 
 const development = devDB.getCredentials()
