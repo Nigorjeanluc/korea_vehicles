@@ -16,6 +16,7 @@ class VehicleController {
    */
   static async addVehicle(req, res) {
     const vehicleExists = await vehicleDB.findVehicleByAttr("name", req.body.name);
+    const vehicleUserExists = await vehicleDB.findVehicleByAttr("user_id", req.user.id);
     if (vehicleExists) {
       return res.status(422).json({
         status: 422,
