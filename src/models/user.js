@@ -18,7 +18,12 @@ const userDefinition = (sequelize, DataTypes) => {
       foreignKey: 'user_id',
       as: 'vehicles',
       onDelete: 'CASCADE',
-    });
+    })
+    user.hasMany(models.activity, {
+      foreignKey: 'user_id',
+      as: 'activities',
+      onDelete: 'CASCADE',
+    })
     user.hasOne(models.verification_code, {
       foreignKey: 'user_id',
       as: 'verification_code',

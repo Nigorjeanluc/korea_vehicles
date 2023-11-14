@@ -32,7 +32,7 @@ class VehicleDB {
             'password',
             'role',
             'isVerified',
-            'createAt',
+            'createdAt',
             'updatedAt'
           ]
         },

@@ -13,7 +13,17 @@ const vehicleDefinition = (sequelize, DataTypes) => {
       foreignKey: 'user_id',
       as: 'user',
       onDelete: 'CASCADE',
-    });
+    })
+    vehicle.hasMany(models.activity, {
+      foreignKey: 'vehicle_id',
+      as: 'activities',
+      onDelete: 'CASCADE',
+    })
+    vehicle.hasMany(models.vehicle_service, {
+      foreignKey: 'vehicle_id',
+      as: 'vehicle_services',
+      onDelete: 'CASCADE',
+    })
   }
 
   return vehicle;

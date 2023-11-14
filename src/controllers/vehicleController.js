@@ -15,8 +15,7 @@ class VehicleController {
    * @returns {object} The status and some data of the user.
    */
   static async addVehicle(req, res) {
-    const vehicleExists = await vehicleDB.findVehicleByAttr("name", req.body.name);
-    const vehicleUserExists = await vehicleDB.findVehicleByAttr("user_id", req.user.id);
+    const vehicleExists = await vehicleDB.findVehicleByAttr("VIN", req.body.VIN);
     if (vehicleExists) {
       return res.status(422).json({
         status: 422,
@@ -24,14 +23,11 @@ class VehicleController {
       });
     }
 
-    const image = req.files.image[0].key.split('vehicles/')[1];
-
-    const vehicle = await vehicleDB.saveVehicle({ ...req.body, image });
-    // await tagDB.saveTag({ name: req.body.name });
+    const vehicle = await vehicleDB.saveVehicle({ ...req.body });
 
     return res.status(201).json({
       status: 201,
-      message: `${vehicle.name} was created successfully`,
+      message: `${vehicle.immatriculation_number} was created successfully`,
       data: vehicle
     });
   }
