@@ -1,6 +1,7 @@
 const subCategoryDefinition = (sequelize, DataTypes) => {
   const sub_category = sequelize.define('sub_category', {
     name: { type: DataTypes.STRING },
+    description: { type: DataTypes.STRING },
     category_id: { type: DataTypes.INTEGER },
     createdAt: { type: DataTypes.DATE },
     updatedAt: { type: DataTypes.DATE }

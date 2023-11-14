@@ -9,6 +9,9 @@ const up = async (queryInterface, Sequelize) => queryInterface.createTable('sub_
     type: Sequelize.STRING,
     unique: true
   },
+  description: {
+    type: Sequelize.STRING,
+  },
   category_id: {
     type: Sequelize.INTEGER,
   },
